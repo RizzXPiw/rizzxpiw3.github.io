@@ -12,9 +12,16 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 app.use(secure);
+app.use(express.static("public"));
 
-// Set public folder for static files
+/* Set public folder for static files
 app.use(express.static(path.join(__dirname, "public")));
+*/
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "index.html"));
+});
+
 
 // Serve CSS and JS files from views folder
 app.use('/css', express.static(path.join(__dirname, 'views/css')));
