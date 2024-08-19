@@ -1,0 +1,41 @@
+{
+  "name": "Ai-RizzPiw",
+  "version": "1.0.0",
+  "description": "Ai By RizzPiw",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint:check": "eslint",
+    "lint:fix": "eslint views/*.html --fix"
+  },
+  "author": "RizzPiw",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cfonts": "^2.9.1",
+    "chalk": "^4.1.0",
+    "cheerio": "^1.0.0-rc.5",
+    "cookie": "^0.5.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "file-type": "^16.1.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "form-data": "^3.0.0",
+    "lodash": "^4.17.20",
+    "needle": "^2.6.0",
+    "node-fetch": "^2.6.1",
+    "node-gtts": "^2.0.2",
+    "node-tesseract-ocr": "^2.0.0",
+    "qs": "^6.10.1",
+    "request": "^2.88.2",
+    "spinnies": "^0.5.1",
+    "ssl-express-www": "^3.0.7",
+    "urlencode": "^1.1.0"
+  },
+  "devDependencies": {
+    "@html-eslint/eslint-plugin": "^0.17.1",
+    "@html-eslint/parser": "^0.17.1",
+    "eslint": "^8.36.0"
+  }
+}

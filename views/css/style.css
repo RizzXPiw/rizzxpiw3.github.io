@@ -1,0 +1,474 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+nav {
+  background-color: #FF8C00;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  position: relative;
+  z-index: 1000;
+}
+
+nav h1 {
+  margin: 0;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+
+nav h1 i {
+  margin-right: 10px;
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: fixed;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: slideDownMenu 0.3s ease forwards; /* Changed duration to be faster */
+  text-align: center;
+  z-index: 500; /* Ensures it appears above other content */
+}
+
+.dropdown-menu.dark-mode {
+  background-color: #333333;
+}
+
+@keyframes slideDownMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Increased the initial translate value */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #FF8C00;
+  text-decoration: none;
+}
+
+.dropdown-menu a.dark-mode {
+  color: #ffffff;
+}
+
+.dropdown-menu a i {
+  margin-right: 10px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-menu a.dark-mode:hover {
+  background-color: #555555;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.response-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  min-height: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  gap: 5px;
+  padding-bottom: 80px;
+}
+
+.response-container.dark-mode {
+  background-color: transparent;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: #909090;
+  align-self: flex-end;
+}
+
+.user-message.dark-mode {
+  background-color: #444444;
+}
+
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.answer {
+  color: #000;
+  position: relative;
+  align-self: flex-start;
+  margin-bottom: 30px;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #BABEBE;
+}
+
+.answer.dark-mode {
+  background-color: #BABEBE;
+  color: #ffffff;
+}
+
+.code-answer {
+  background-color: #f8f9fa;
+  color: #212529;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  margin: 5px 0;
+  width: calc(100% - 20px);
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.code-answer.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.code-answer pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: none;
+  border: none;
+}
+
+.copy-button {
+  background-color: transparent;
+  border: none;
+  color: #FF8C00;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+}
+
+.copy-button:hover {
+  background-color: transparent;
+  color: #FF8C00;
+  text-decoration: none;
+}
+
+.copy-button:active {
+  animation: blink 0.5s infinite;
+}
+
+.copy-button.blink {
+  animation: blink 0.2s step-end infinite alternate;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.searching {
+  color: #FF8C00;
+  font-size: 24px;
+  animation: blink 1s infinite;
+  align-self: flex-start;
+}
+
+#search-animation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+    text-align: center;
+}
+
+#search-animation.show {
+    display: block;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-left-color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.label.dark-mode {
+  color: #bbbbbb;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #FF8C00;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.code-type {
+  font-size: 14px;
+  color: #FF8C00;
+  font-family: Arial, sans-serif;
+}
+
+.scroll-to-bottom {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: #FF8C00;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-to-bottom:hover {
+  background-color: #0056b3;
+}
+
+.scroll-to-bottom:active {
+  background-color: #004099;
+}
+
+#input-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#input-container.dark-mode {
+  background-color: #595959;
+}
+
+#inputText {
+  width: calc(100% - 60px);
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  resize: none;
+  height: 40px;
+  max-height: 200px; /* Batas maksimal tinggi kolom teks */
+  background-color: #cccccc;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+#inputText.dark-mode {
+  background-color: #444444;
+  color: #ffffff;
+}
+
+#send-button {
+  padding: 10px 13px;
+  border-radius: 50%;
+  border: none;
+  background-color: #FF8C00;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-left: 10px;
+}
+
+#send-button.dark-mode {
+  background-color: #FF8C00;
+}
+
+#send-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+#send-button.dark-mode:disabled {
+  background-color: #888888;
+}
+
+#send-button i {
+  font-size: 18px;
+}
+
+#upload-button {
+  padding: 10px 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: #cccccc;
+  color: #FF8C00;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+#upload-button:hover {
+  color: #0056b3; /* Ubah warna ikon saat di klik */
+}
+
+.time-label {
+  font-size: 10px;
+  color: #888;
+  text-align: right;
+  margin-top: -5px;
+}
+
+.time-label.dark-mode {
+  color: #bbbbbb;
+}
+
+.no-copy {
+   user-select: none;
+   -Webkit-user-select: none;
+   -moze-user-select: none;
+   -ms-user-select: none;
+}
+
+// Upload Image
+
+#photoIconWrapper img {
+  width: 50px;
+  height: 50px;
+}
+
+.upload-section {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.upload-button {
+  display: inline-block;
+  background-color: #FF8C00;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.question-display {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.question-display img {
+  width: 100px;
+  height: auto;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+        
+#response img {
+  max-width: 100%;
+  height: auto;
+}
+
+#photoPreview {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
